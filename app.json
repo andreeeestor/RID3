@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "rid3",
-    "slug": "rid3",
+    "name": "RID3",
+    "slug": "RID3",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "rid3",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

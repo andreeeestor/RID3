@@ -11,23 +11,23 @@ export const images = {
 export const onboarding = [
   {
     id: 1,
-    title: "The perfect ride is just a tap away!",
+    title: "Agilidade e economia em duas rodas!",
     description:
-      "Your journey begins with Ryde. Find your ideal ride effortlessly.",
+      "Sua jornada começa com o RID3. Encontre a moto ideal para sua corrida de forma rápida e fácil.",
     image: images.onboarding1,
   },
   {
     id: 2,
-    title: "Best car in your hands with Ryde",
+    title: "Escolha sua experiência, do seu jeito",
     description:
-      "Discover the convenience of finding your perfect ride with Ryde",
+      "Selecione a cilindrada da moto e o gênero do motorista. Você tem o controle da sua corrida.",
     image: images.onboarding2,
   },
   {
     id: 3,
-    title: "Your ride, your way. Let's go!",
+    title: "Segurança, inclusão e rapidez. Vamos nessa?",
     description:
-      "Enter your destination, sit back, and let us take care of the rest.",
+      "Informe seu destino, relaxe e aproveite uma viagem ágil e segura com motoristas certificados.",
     image: images.onboarding3,
   },
 ];

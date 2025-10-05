@@ -5,14 +5,8 @@ interface Fa5IconProps {
   size?: number;
   color?: string;
   className?: string;
+  solid?: boolean;
 }
 export default function Fa5Icon(props: Fa5IconProps) {
-  return (
-    <Icon
-      name={props.name}
-      size={props.size}
-      color={props.color}
-      className={props.className}
-    />
-  );
+  return <Icon {...props} />;
 }

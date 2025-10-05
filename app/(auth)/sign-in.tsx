@@ -2,18 +2,42 @@ import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import OAuth from "@/components/OAuth";
 import { images } from "@/constants";
-import { Link } from "expo-router";
+import { useSignIn } from "@clerk/clerk-expo";
+import { Link, router } from "expo-router";
 import { useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Alert, Image, ScrollView, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function SignInPage() {
+  const { signIn, setActive, isLoaded } = useSignIn();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const onSignInPress = async () => {};
+  const onSignInPress = async () => {
+    if (!isLoaded) return;
+
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: form.email,
+        password: form.password,
+      });
+
+      if (signInAttempt.status === "complete") {
+        await setActive({ session: signInAttempt.createdSessionId });
+        router.replace("/(root)/(tabs)/home");
+      } else if (signInAttempt) {
+
+      } else {
+        console.error(JSON.stringify(signInAttempt, null, 2));
+        Alert.alert("ERRO", "Login falhou. Por favor, tente novamente.");
+      }
+    } catch (err: any) {
+      console.error(JSON.stringify(err, null, 2));
+      Alert.alert("ERRO", err.errors[0].longMessage);
+    }
+  };
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -58,8 +82,6 @@ export default function SignInPage() {
             <Text className="text-primary-500">Cadastrar</Text>
           </Link>
         </View>
-
-        {/* Modal de Verificação */}
       </View>
     </ScrollView>
   );

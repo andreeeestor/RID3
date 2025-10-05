@@ -14,7 +14,7 @@ export default function OnboardingPage() {
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
       <TouchableOpacity
         onPress={() => {
-          router.replace("/(auth)/sign-up");
+          router.replace("/(auth)/sign-in");
         }}
         className="w-full flex justify-end items-end p-5"
       >
@@ -48,7 +48,7 @@ export default function OnboardingPage() {
       <CustomButton
         onPress={() =>
           isLastSlide
-            ? router.replace("/(auth)/sign-up")
+            ? router.replace("/(auth)/sign-in")
             : swiperRef.current?.scrollBy(1)
         }
         title={isLastSlide ? "Começar" : "Próximo"}

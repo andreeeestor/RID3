@@ -3,10 +3,29 @@ import { ReactElement } from "react";
 import { View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
+interface TabIconProps {
+  focused: boolean;
+  icon: ReactElement;
+}
+
+const TabIcon = (props: TabIconProps) => (
+  <View
+    className={`flex flex-row justify-center items-center rounded-full ${
+      props.focused ? "bg-general-300" : ""
+    }`}
+  >
+    <View
+      className={`rounded-full w-12 h-12 items-center justify-center ${
+        props.focused ? "bg-general-400" : ""
+      }`}
+    ></View>
+  </View>
+);
+
 export default function TabsLayout() {
   return (
     <Tabs
-      initialRouteName="index"
+      initialRouteName="home"
       screenOptions={{
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "white",
@@ -82,22 +101,3 @@ export default function TabsLayout() {
     </Tabs>
   );
 }
-
-interface TabIconProps {
-  focused: boolean;
-  icon: ReactElement;
-}
-
-const TabIcon = (props: TabIconProps) => (
-  <View
-    className={`flex flex-row justify-center items-center rounded-full ${
-      props.focused ? "bg-general-300" : ""
-    }`}
-  >
-    <View
-      className={`rounded-full w-12 h-12 items-center justify-center ${
-        props.focused ? "bg-general-400" : ""
-      }`}
-    ></View>
-  </View>
-);

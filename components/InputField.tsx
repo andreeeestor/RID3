@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import {
-    Keyboard,
+  Keyboard,
   KeyboardAvoidingView,
+  KeyboardTypeOptions,
   Platform,
   Text,
   TextInput,
@@ -18,11 +19,14 @@ interface InputFieldProps {
   containerStyle?: string;
   onChangeText?: (value: string) => void;
   secureTextEntry?: boolean;
+  keyboardType?: KeyboardTypeOptions;
 }
 
 export default function InputField(props: InputFieldProps) {
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View className="my-2 w-full">
           <Text
@@ -37,6 +41,8 @@ export default function InputField(props: InputFieldProps) {
             <TextInput
               className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-left`}
               secureTextEntry={props.secureTextEntry}
+              keyboardType={props.keyboardType}
+              autoCapitalize="none"
               {...props}
             />
           </View>

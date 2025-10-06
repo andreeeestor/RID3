@@ -20,6 +20,8 @@ interface InputFieldProps {
   onChangeText?: (value: string) => void;
   secureTextEntry?: boolean;
   keyboardType?: KeyboardTypeOptions;
+  inputStyle?: string
+  editable?: boolean
 }
 
 export default function InputField(props: InputFieldProps) {
@@ -39,7 +41,7 @@ export default function InputField(props: InputFieldProps) {
           >
             {props.icon}
             <TextInput
-              className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-left`}
+              className={`rounded-full p-4 font-JakartaSemiBold flex-1 ${props.inputStyle} text-left`}
               secureTextEntry={props.secureTextEntry}
               keyboardType={props.keyboardType}
               autoCapitalize="none"

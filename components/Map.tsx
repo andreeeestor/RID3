@@ -1,14 +1,17 @@
-import { Text, View } from "react-native";
+import { cssInterop } from "nativewind";
+import MapView, { PROVIDER_DEFAULT } from "react-native-maps";
 
-interface MapProps {
+cssInterop(MapView, {
+  className: "style",
+});
 
-}
-export default function Map(props : MapProps){
-    return(
-        <View>
-            <Text>
-                Mapa
-            </Text>
-        </View>
-    )
+export default function Map() {
+  return (
+    <MapView
+      provider={PROVIDER_DEFAULT}
+      className="h-full w-full rounded-2xl"
+      showsPointsOfInterest={false}
+      showsUserLocation={true}
+    />
+  );
 }

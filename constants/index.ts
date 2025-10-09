@@ -2,12 +2,16 @@ import onboarding1 from "@/assets/images/onboarding1.png";
 import onboarding2 from "@/assets/images/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding3.png";
 import signUpBike from "@/assets/images/signup-bike.png"
+import marker from "@/assets/images/marker.png";
+// import selectedMarker from "@/assets/icons/selected-marker.png";
 
 export const images = {
   onboarding1,
   onboarding2,
   onboarding3,
-  signUpBike
+  signUpBike,
+  marker,
+  // selectedMarker
 };
 
 export const onboarding = [

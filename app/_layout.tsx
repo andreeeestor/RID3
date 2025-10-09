@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { useFonts } from "expo-font";

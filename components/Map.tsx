@@ -1,3 +1,4 @@
+import { images } from "@/constants";
 import { drivers } from "@/data/mockData";
 import { calculateRegion, generateMarkersFromData } from "@/lib/map";
 import { useDriverStore } from "@/store/useDriverStore";
@@ -6,7 +7,6 @@ import { MarkerData } from "@/types/type";
 import { cssInterop } from "nativewind";
 import { useEffect, useState } from "react";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
-import { images } from "@/constants";
 
 cssInterop(MapView, {
   className: "style",
@@ -31,6 +31,7 @@ export default function Map() {
   });
 
   useEffect(() => {
+    setSelectedDriver(drivers);
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
 
@@ -53,13 +54,14 @@ export default function Map() {
       showsUserLocation={true}
     >
       {markers.map((marker) => (
-        <Marker key={marker.id}
-        coordinate={{
-          latitude: marker.latitude,
-          longitude: marker.longitude
-        }}
-        title={marker.title}
-        image={selectedDriver === marker.id && images.marker}
+        <Marker
+          key={marker.id}
+          coordinate={{
+            latitude: marker.latitude,
+            longitude: marker.longitude,
+          }}
+          title={marker.title}
+          image={selectedDriver === marker.id && images.marker}
         />
       ))}
     </MapView>

@@ -52,7 +52,7 @@ export default function OnboardingPage() {
             : swiperRef.current?.scrollBy(1)
         }
         title={isLastSlide ? "Começar" : "Próximo"}
-        className="w-11/12 mt-10"
+        className="w-10/12 mt-10"
       />
     </SafeAreaView>
   );

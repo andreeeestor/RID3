@@ -33,7 +33,7 @@ export default function Page() {
   const handleDestinationPress = (location: {
     latitude: number;
     longitude: number;
-    address: number;
+    address: string;
   }) => {
     setDestinationLocation(location)
 

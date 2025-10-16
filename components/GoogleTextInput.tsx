@@ -28,7 +28,6 @@ export default function GoogleTextInput({
 }: GoogleTextInputProps) {
   const apiKey = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
 
-  // Validação da API Key
   if (!apiKey || apiKey === "missing api key") {
     return (
       <View

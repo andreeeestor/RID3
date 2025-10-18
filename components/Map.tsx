@@ -1,11 +1,16 @@
 import { images } from "@/constants";
-import { drivers } from "@/data/mockData";
-import { calculateRegion, generateMarkersFromData } from "@/lib/map";
+import { useFetch } from "@/lib/fetch";
+import {
+  calculateDriverTimes,
+  calculateRegion,
+  generateMarkersFromData,
+} from "@/lib/map";
 import { useDriverStore } from "@/store/useDriverStore";
 import { useLocationStore } from "@/store/useLocationStore";
-import { MarkerData } from "@/types/type";
+import { Driver, MarkerData } from "@/types/type";
 import { cssInterop } from "nativewind";
 import { useEffect, useState } from "react";
+import { ActivityIndicator, Text, View } from "react-native";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 
 cssInterop(MapView, {
@@ -13,6 +18,7 @@ cssInterop(MapView, {
 });
 
 export default function Map() {
+  const { data: drivers, loading, error } = useFetch<Driver[]>("/(api)/driver");
   const {
     userLatitude,
     userLongitude,
@@ -31,7 +37,6 @@ export default function Map() {
   });
 
   useEffect(() => {
-    setDrivers(drivers);
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
 
@@ -44,6 +49,36 @@ export default function Map() {
       setMarkers(newMarkers);
     }
   }, [drivers]);
+
+  useEffect(() => {
+    if (markers.length > 0 && destinationLatitude && destinationLongitude) {
+      calculateDriverTimes({
+        markers,
+        userLongitude,
+        userLatitude,
+        destinationLatitude,
+        destinationLongitude,
+      }).then((drivers) => {
+        setDrivers(drivers as MarkerData[]);
+      });
+    }
+  }, [markers, destinationLatitude, destinationLongitude]);
+
+  if (loading || !userLatitude || !userLongitude) {
+    return (
+      <View className="flex justify-between items-center w-full">
+        <ActivityIndicator size={"small"} color={"#000"} />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View className="flex justify-between items-center w-full">
+        <Text>Error: {error}</Text>
+      </View>
+    );
+  }
 
   return (
     <MapView

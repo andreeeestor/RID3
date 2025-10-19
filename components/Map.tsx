@@ -12,6 +12,7 @@ import { cssInterop } from "nativewind";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
+import MapViewDirections from "react-native-maps-directions";
 
 cssInterop(MapView, {
   className: "style",
@@ -48,7 +49,7 @@ export default function Map() {
 
       setMarkers(newMarkers);
     }
-  }, [drivers]);
+  }, [drivers, userLatitude, userLongitude]);
 
   useEffect(() => {
     if (markers.length > 0 && destinationLatitude && destinationLongitude) {
@@ -99,6 +100,34 @@ export default function Map() {
           image={selectedDriver === marker.id && images.marker}
         />
       ))}
+
+      {destinationLatitude && destinationLongitude && (
+        <>
+          <Marker
+            key={"destination"}
+            coordinate={{
+              latitude: destinationLatitude,
+              longitude: destinationLongitude,
+            }}
+            title="Destino"
+            // image={icons.pin}
+          />
+
+          <MapViewDirections
+            origin={{
+              latitude: userLatitude!,
+              longitude: userLongitude!,
+            }}
+            destination={{
+              latitude: destinationLatitude,
+              longitude: destinationLongitude,
+            }}
+            apikey={process.env.EXPO_PUBLIC_GOOGLE_API_KEY}
+            strokeColor="#0286FF"
+            strokeWidth={3}
+          />
+        </>
+      )}
     </MapView>
   );
 }

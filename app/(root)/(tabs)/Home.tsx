@@ -2,8 +2,9 @@ import Fa5Icon from "@/components/Fa5Icon";
 import GoogleTextInput from "@/components/GoogleTextInput";
 import Map from "@/components/Map";
 import RideCard from "@/components/RideCard";
-import { recentRides } from "@/data/mockData";
+import { useFetch } from "@/lib/fetch";
 import { useLocationStore } from "@/store/useLocationStore";
+import { Ride } from "@/types/type";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import * as Location from "expo-location";
 import { router } from "expo-router";
@@ -22,8 +23,11 @@ export default function Page() {
   const { setUserLocation, setDestinationLocation } = useLocationStore();
   const { user } = useUser();
   const { signOut } = useAuth();
-  const loading = false;
-
+  const {
+    data: recentRides,
+    loading,
+    error,
+  } = useFetch<Ride[]>(`/(api)/ride/${user?.id}`);
   const [hasPermissions, setHasPermissions] = useState(false);
 
   const handleSignOut = () => {
@@ -35,9 +39,9 @@ export default function Page() {
     longitude: number;
     address: string;
   }) => {
-    setDestinationLocation(location)
+    setDestinationLocation(location);
 
-    router.push("/(root)/find-ride")
+    router.push("/(root)/find-ride");
   };
 
   useEffect(() => {

@@ -1,50 +1,133 @@
-# Welcome to your Expo app 👋
+# 🏍️ RID3R - Mobilidade Urbana sobre Duas Rodas
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+RID3R é uma aplicação de mobilidade urbana que conecta motociclistas e passageiros, oferecendo uma alternativa ágil, econômica e acessível para o transporte nas cidades.  
+Focado na personalização da experiência e na segurança do usuário, nosso serviço se diferencia por colocar o controle nas mãos de quem viaja.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Sobre o Projeto
 
-   ```bash
-   npm install
-   ```
+Inspirado no modelo de sucesso de aplicativos como Uber e 99, o RID3R se especializa exclusivamente em **corridas de moto**.  
+A ideia central é simples: fornecer um transporte rápido e eficiente que se adapta perfeitamente ao ritmo acelerado do contexto urbano, **sem abrir mão da segurança e da inclusão**.
 
-2. Start the app
+Nossa identidade é **humanizada**, buscando **proximidade com as pessoas** e reforçando a **inclusão social e a igualdade de gênero** no trânsito.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## ✨ Principais Funcionalidades
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 👥 Para Passageiros:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+#### 🚘 Escolha Personalizada da Corrida
+- Selecione a **cilindrada da moto** (pequena, média ou alta) de acordo com sua preferência de conforto e velocidade.  
+- Escolha o **gênero do(a) motorista** (homem ou mulher), garantindo mais conforto e segurança, especialmente para o público feminino.
 
-## Get a fresh project
+#### 📅 Agendamento de Viagens
+- Programe suas corridas com antecedência — ideal para viagens que exigem motos de maior cilindrada ou planejamento prévio.
 
-When you're ready, run:
+#### 💰 Tarifação Dinâmica
+- Preços justos e transparentes, que variam de acordo com a **distância**, **demanda**, **tipo de moto** e **horário**.
 
+#### 🛡️ Segurança e Inclusão
+- **Segurança Reforçada:** Motoristas certificados e com checagem de antecedentes.  
+- **Foco na Inclusão:** Incentivo à participação de **mulheres motociclistas** e criação de um ambiente acolhedor.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+Este projeto foi construído utilizando uma stack moderna e robusta, garantindo escalabilidade e uma ótima experiência de usuário:
+
+### 📱 Frontend (Mobile)
+- **Framework:** React Native com Expo  
+- **Linguagem:** TypeScript  
+- **Estilização:** Tailwind CSS (via NativeWind)  
+- **Navegação:** Expo Router  
+- **Gerenciamento de Estado:** Zustand  
+
+### ⚙️ Backend
+- **API Routes do Expo**  
+- **Banco de Dados:** PostgreSQL (via Neon)  
+- **Autenticação:** Clerk  
+- **Pagamentos:** Stripe  
+- **Mapas e Geolocalização:** Google Maps Platform (APIs de Places e Directions)
+
+---
+
+## 💪 Pontos Fortes
+
+- 🚦 **Nicho de Mercado Claro:** foco total em transporte de moto — rápido, econômico e adaptado para o contexto urbano.  
+- 🧍‍♀️ **Diferencial Competitivo:** ênfase em **segurança e inclusão**, respondendo a uma demanda real do mercado.  
+- 🧭 **Controle para o Usuário:** personalização da corrida e escolha do motorista.  
+- ⚙️ **Modelo Escalável:** potencial de expansão para **aluguel de motos** e novos serviços.
+
+---
+
+## 🔮 Visão de Futuro
+
+O próximo passo será o **sistema de aluguel de motos**, permitindo:
+- Que novos motoristas ingressem na plataforma;
+- Que motoristas atuais atualizem sua frota e aumentem seus ganhos;
+- Que a comunidade RID3R se fortaleça como um ecossistema de mobilidade sobre duas rodas.
+
+---
+
+## 🏁 Como Começar
+
+Para executar este projeto localmente, siga os passos abaixo:
+
+### 1️⃣ Clone o repositório:
 ```bash
-npm run reset-project
+git clone https://github.com/seu-usuario/rid3r.git
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2️⃣ Acesse o diretório do projeto:
+```bash
+cd rid3r
+```
 
-## Learn more
+### 3️⃣ Instale as dependências:
+```bash
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 4️⃣ Configure as variáveis de ambiente:
+- Renomeie o arquivo `.env.example` para `.env`
+- Adicione suas chaves de API (Clerk, Stripe, Google Maps, Neon)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 5️⃣ Inicie o servidor de desenvolvimento:
+```bash
+npx expo start
+```
 
-## Join the community
+### 6️⃣ Teste no dispositivo:
+- Escaneie o **QR Code** exibido no terminal com o aplicativo **Expo Go** (Android ou iOS).
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🧭 Estrutura do Projeto
+
+```bash
+rid3r/
+├── app/                  # Código principal do aplicativo (Expo Router)
+├── components/           # Componentes reutilizáveis (UI e layouts)
+├── hooks/                # Hooks customizados (Zustand, APIs, etc.)
+├── lib/                  # Configurações (Stripe, Clerk, Maps, etc.)
+├── assets/               # Ícones, imagens e fontes
+├── .env.example          # Exemplo de variáveis de ambiente
+└── README.md
+```
+
+---
+
+## 📚 Licença
+
+Este projeto é licenciado sob a licença **MIT**.  
+Sinta-se à vontade para estudar, modificar e contribuir.
+
+---
+
+## ✨ Créditos
+
+Desenvolvido com ❤️ por **André Nestor**  
+📦 Repositório: [https://github.com/seu-usuario/rid3r](https://github.com/seu-usuario/rid3r)

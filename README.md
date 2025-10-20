@@ -78,7 +78,7 @@ Para executar este projeto localmente, siga os passos abaixo:
 
 ### 1️⃣ Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/rid3r.git
+git clone https://github.com/andreeeestor/rid3r.git
 ```
 
 ### 2️⃣ Acesse o diretório do projeto:
@@ -124,10 +124,3 @@ rid3r/
 
 Este projeto é licenciado sob a licença **MIT**.  
 Sinta-se à vontade para estudar, modificar e contribuir.
-
----
-
-## ✨ Créditos
-
-Desenvolvido com ❤️ por **André Nestor**  
-📦 Repositório: [https://github.com/seu-usuario/rid3r](https://github.com/seu-usuario/rid3r)
